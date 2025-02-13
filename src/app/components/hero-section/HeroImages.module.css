@@ -1,0 +1,12 @@
+.images {
+  position: relative;
+  width: auto;
+}
+
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  position: relative;
+  width: auto;
+}
