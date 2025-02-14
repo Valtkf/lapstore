@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { urlForImage } from "@/sanity/lib/image";
 import { useState } from "react";
+import { FaMinus, FaPlus } from "react-icons/fa6";
+import { Button } from "@/components/ui/button";
 
 interface SanityImage {
   _type: string;
@@ -14,6 +16,7 @@ interface SanityImage {
 
 interface Product {
   name: string;
+  description: string;
   price: number;
   images: SanityImage[];
   slug: {
@@ -51,9 +54,25 @@ export default function ProductDetails({ product }: { product: Product }) {
           className="object-cover mx-auto w-full"
         />
       </div>
-      <div className="flex flex-col gap-y-4 w-2/5">
+      <div className="flex flex-col gap-y-4 w-2/5 mr-10">
         <div className="text-xl font-bold">{product.name}</div>
+        <div className="text-md font-medium">{product.description}</div>
         <div className="text-xl font-bold">{product.price} €</div>
+        <div className="flex flex-col items-center gap-y-2">
+          <div className="flex flex-col md:flex-row max-w-[400px] mx-auto gap-4 justify-center items-center border border-black py-2 px-4">
+            <h3 className="text-lg md:text-xl">Quantity</h3>
+            <p className="flex items-center gap-2">
+              <span className="text-xl">
+                <FaMinus />
+              </span>
+              <span className="text-lg md:text-xl">1</span>
+              <span className="text-xl">
+                <FaPlus />
+              </span>
+            </p>
+          </div>
+          <Button className="w-full md:w-[300px] mt-4">Add to Cart</Button>
+        </div>
       </div>
     </div>
   );
